@@ -1,0 +1,130 @@
+---
+# Copyright 2016, Walmart Stores, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+## Verbosity Options
+debug: False
+
+# Set the package install state for distribution packages
+# Options are 'present' and 'latest'
+watcher_package_state: "latest"
+
+## Toggle developer mode
+watcher_developer_mode: false
+
+## The git source/branch
+watcher_git_repo: https://git.openstack.org/openstack/watcher
+watcher_git_install_branch: master
+
+## The git source/branch for the upper-constraints (used in developer mode)
+watcher_requirements_git_repo: https://git.openstack.org/openstack/requirements
+watcher_requirements_git_install_branch: master
+
+## The packages to build from source (used in developer mode)
+watcher_developer_constraints:
+  - "git+{{ watcher_git_repo }}@{{ watcher_git_install_branch }}#egg=watcher"
+
+# Name of the virtual env to deploy into
+watcher_venv_tag: untagged
+watcher_bin: "/openstack/venvs/watcher-{{ watcher_venv_tag }}/bin"
+
+# URL of the pre-built virtualenv
+watcher_venv_download_url: http://127.0.0.1/venvs/untagged/ubuntu/watcher.tgz
+
+## System info
+watcher_system_user_name: watcher
+watcher_system_group_name: watcher
+watcher_system_shell: /bin/false
+watcher_system_comment: watcher system user
+watcher_system_user_home: "/var/lib/{{ watcher_system_user_name }}"
+
+## DB
+watcher_galera_user: watcher
+watcher_galera_database: watcher
+
+## RabbitMQ info
+watcher_rabbitmq_userid: watcher
+watcher_rabbitmq_vhost: /watcher
+watcher_rabbitmq_port: 5672
+watcher_rabbitmq_use_ssl: False
+# Comma separated list of hosts
+watcher_rabbitmq_servers: 127.0.0.1
+# Inventory group containing the hosts for the cluster
+watcher_rabbitmq_host_group: "rabbitmq_all"
+
+watcher_api_program_name: watcher-api
+watcher_decision_engine_program_name: watcher-decision-engine
+watcher_applier_program_name: watcher-applier
+
+## Service Type and Data
+watcher_service_region: RegionOne
+watcher_service_name: watcher
+watcher_service_port: 9322
+watcher_service_proto: http
+watcher_service_type: infra-optim
+watcher_service_description: "Watcher Service"
+watcher_service_user_name: watcher
+watcher_service_tenant_name: service
+watcher_service_project_name: service
+watcher_service_project_domain_id: default
+watcher_service_user_domain_id: default
+watcher_service_publicuri: "{{ watcher_service_proto }}://{{ external_lb_vip_address }}:{{ watcher_service_port }}"
+watcher_service_publicurl: "{{ watcher_service_publicuri }}"
+watcher_service_internaluri: "{{ watcher_service_proto }}://{{ internal_lb_vip_address }}:{{ watcher_service_port }}"
+watcher_service_internalurl: "{{ watcher_service_internaluri }}"
+watcher_service_adminuri: "{{ watcher_service_proto }}://{{ internal_lb_vip_address }}:{{ watcher_service_port }}"
+watcher_service_adminurl: "{{ watcher_service_adminuri }}"
+watcher_service_in_ldap: false
+
+## Keystone authentication middleware
+watcher_keystone_auth_plugin: password
+
+# watcher packages that must be installed before anything else
+watcher_requires_pip_packages:
+  - virtualenv
+  - virtualenv-tools
+  - python-keystoneclient # Keystoneclient needed to OSA keystone lib
+  - httplib2
+
+# Common pip packages
+watcher_pip_packages:
+  - watcher
+  - python-watcherclient
+  - PyMySQL
+  - python-memcached
+  - pycrypto
+
+# watcher services info
+watcher_role_name: admin
+
+## Service Names
+watcher_service_names:
+  - "watcher-api"
+  - "watcher-decision-engine"
+  - "watcher-applier"
+
+watcher_required_secrets:
+  - watcher_galera_password
+  - watcher_rabbitmq_password
+  - watcher_service_password
+
+# This variable is used by the repo_build process to determine
+# which host group to check for members of before building the
+# pip packages required by this role. The value is picked up
+# by the py_pkgs lookup.
+watcher_role_project_group: watcher_all
+
+## Tunable overrides
+watcher_policy_overrides: {}
+watcher_conf_overrides: {}

@@ -1,0 +1,58 @@
+# {{ ansible_managed }}
+
+[DEFAULT]
+logging_exception_prefix = %(color)s%(asctime)s.%(msecs)03d TRACE %(name)s %(instance)s
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(color)s%(levelname)s %(name)s [-%(color)s] %(instance)s%(color)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(color)s%(levelname)s %(name)s [%(request_id)s %(user_name)s %(project_name)s%(color)s] %(instance)s%(color)s%(message)s
+control_exchange = watcher
+debug = True
+
+[oslo_messaging_rabbit]
+rabbit_port = {{ watcher_rabbitmq_port }}
+rabbit_userid = {{ watcher_rabbitmq_userid }}
+rabbit_password = {{ watcher_rabbitmq_password }}
+rabbit_virtual_host = {{ watcher_rabbitmq_vhost }}
+rabbit_hosts = {{ watcher_rabbitmq_servers }}
+rabbit_use_ssl = {{ watcher_rabbitmq_use_ssl }}
+
+[database]
+connection = mysql+pymysql://{{ watcher_galera_user }}:{{ watcher_galera_password }}@{{ watcher_galera_address }}/{{ watcher_galera_database }}?charset=utf8
+
+[api]
+port = {{ watcher_service_port }}
+host = 0.0.0.0
+
+[oslo_policy]
+policy_file = /etc/watcher/policy.json
+
+[keystone_authtoken]
+auth_url = {{ keystone_service_adminuri }}
+auth_uri = {{ keystone_service_internaluri }}
+username = {{ watcher_service_user_name }}
+password = {{ watcher_service_password }}
+project_domain_id = {{ watcher_service_project_domain_id }}
+user_domain_id = {{ watcher_service_user_domain_id }}
+project_name = {{ watcher_service_project_name }}
+memcached_servers = {{ memcached_servers }}
+signing_dir = /var/cache/watcher
+auth_type = password
+
+[watcher_clients_auth]
+auth_url = {{ keystone_service_adminuri }}
+auth_uri = {{ keystone_service_internaluri }}
+username = {{ watcher_service_user_name }}
+password = {{ watcher_service_password }}
+project_domain_id = {{ watcher_service_project_domain_id }}
+user_domain_id = {{ watcher_service_user_domain_id }}
+project_name = {{ watcher_service_project_name }}
+auth_type = password
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/watcher
+
+[watcher_messaging]
+notifier_driver = messaging
+
+[watcher_cluster_data_model_collectors.compute]
+period = 3600
