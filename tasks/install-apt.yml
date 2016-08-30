@@ -34,7 +34,7 @@
   until: install_packages|success
   retries: 5
   delay: 2
-  with_items: "{{ watcher_apt_packages }}"
+  with_items: "{{ watcher_distro_packages }}"
 
 - name: Install packages required in Developer Mode
   apt:
@@ -44,6 +44,6 @@
   until: install_packages|success
   retries: 5
   delay: 2
-  with_items: "{{ watcher_developer_mode_apt_packages }}"
+  with_items: "{{ watcher_developer_mode_distro_packages }}"
   when:
     - watcher_developer_mode | bool
