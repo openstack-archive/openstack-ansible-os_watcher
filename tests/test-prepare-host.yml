@@ -17,7 +17,7 @@
   hosts: localhost
   pre_tasks:
     - name: Clear iptables rules
-      shell: ./iptables-clear.sh
+      shell: ./tests/iptables-clear.sh
     # Make sure OS does not have a stale package cache.
     - name: Update apt cache
       apt:
