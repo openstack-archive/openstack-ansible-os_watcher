@@ -1,5 +1,5 @@
 ---
-# Copyright 2016, Walmart Stores, Inc.
+# Copyright 2016, Rackspace US, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,15 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Setup the host
-- include: playbooks/test-install-openstack-hosts.yml
-- include: playbooks/test-setup-host.yml
+bridges:
+  - "br-mgmt"
+  - "br-vxlan"
+  - "br-vlan"
 
-# Install RabbitMQ/MariaDB
-- include: test-install-infra.yml
-
-# Install keystone
-- include: test-install-keystone.yml
-
-# Install Watcher
-- include: test-install-watcher.yml
+ansible_python_interpreter: "/usr/bin/python2"
