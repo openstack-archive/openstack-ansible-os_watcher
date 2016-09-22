@@ -62,13 +62,13 @@
     - watcher-install
 
 - include: watcher_db_setup.yml
-  when:
-    - inventory_hostname == groups['watcher_api'][0]
+  static: no
+  when: inventory_hostname == groups['watcher_api'][0]
   tags:
     - watcher-install
 
 - include: watcher_service_setup.yml
-  when:
-    - inventory_hostname == groups['watcher_api'][0]
+  static: no
+  when: inventory_hostname == groups['watcher_api'][0]
   tags:
     - watcher-install
