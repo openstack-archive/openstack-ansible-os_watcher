@@ -27,10 +27,6 @@ watcher_developer_mode: false
 watcher_git_repo: https://git.openstack.org/openstack/watcher
 watcher_git_install_branch: master
 
-## The git source/branch for the upper-constraints (used in developer mode)
-watcher_requirements_git_repo: https://git.openstack.org/openstack/requirements
-watcher_requirements_git_install_branch: master
-
 ## The packages to build from source (used in developer mode)
 watcher_developer_constraints:
   - "git+{{ watcher_git_repo }}@{{ watcher_git_install_branch }}#egg=watcher"
