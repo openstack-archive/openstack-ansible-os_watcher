@@ -17,6 +17,7 @@
   command: "{{ watcher_bin }}/watcher-db-manage --config-file /etc/watcher/watcher.conf create_schema"
   become: yes
   become_user: "{{ watcher_system_user_name }}"
+  changed_when: false
   tags:
     - watcher-db-setup
     - watcher-setup
