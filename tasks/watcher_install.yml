@@ -93,7 +93,7 @@
 
 - name: Update virtualenv path
   command: >
-    virtualenv-tools --update-path=auto {{ watcher_bin | dirname }}
+    virtualenv-tools --update-path=auto --reinitialize {{ watcher_bin | dirname }}
   when:
     - not watcher_developer_mode | bool
     - watcher_get_venv | changed or watcher_venv_dir | changed
