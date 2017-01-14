@@ -45,33 +45,27 @@
     dest: "/var/cache/{{ watcher_venv_download_url | basename }}"
     checksum: "sha1:{{ lookup('url', watcher_venv_download_url | replace('tgz', 'checksum')) }}"
   register: watcher_get_venv
-  when: not watcher_developer_mode | bool
+  when: watcher_venv_download | bool
 
 - name: Remove existing venv
   file:
     path: "{{ watcher_bin | dirname }}"
     state: absent
-  when:
-    - not watcher_developer_mode | bool
-    - watcher_get_venv | changed
+  when: watcher_get_venv | changed
 
 - name: Create watcher venv dir
   file:
     path: "{{ watcher_bin | dirname }}"
     state: directory
   register: watcher_venv_dir
-  when:
-    - not watcher_developer_mode | bool
-    - watcher_get_venv | changed
+  when: watcher_get_venv | changed
 
 - name: Unarchive pre-built venv
   unarchive:
     src: "/var/cache/{{ watcher_venv_download_url | basename }}"
     dest: "{{ watcher_bin | dirname }}"
     copy: "no"
-  when:
-    - not watcher_developer_mode | bool
-    - watcher_get_venv | changed or watcher_venv_dir | changed
+  when: watcher_get_venv | changed
   notify: Restart watcher services
 
 - name: Install pip packages
@@ -88,12 +82,10 @@
   until: install_packages|success
   retries: 5
   delay: 2
-  when: watcher_developer_mode | bool
+  when: watcher_get_venv | failed or watcher_get_venv | skipped
   notify: Restart watcher services
 
 - name: Update virtualenv path
   command: >
     virtualenv-tools --update-path=auto --reinitialize {{ watcher_bin | dirname }}
-  when:
-    - not watcher_developer_mode | bool
-    - watcher_get_venv | changed or watcher_venv_dir | changed
+  when: watcher_get_venv | changed

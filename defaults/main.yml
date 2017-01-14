@@ -36,6 +36,9 @@ watcher_developer_constraints:
 watcher_venv_tag: untagged
 watcher_bin: "/openstack/venvs/watcher-{{ watcher_venv_tag }}/bin"
 
+# venv_download, even when true, will use the fallback method of building the
+# venv from scratch if the venv download fails.
+watcher_venv_download: "{{ not watcher_developer_mode | bool }}"
 # URL of the pre-built virtualenv
 watcher_venv_download_url: http://127.0.0.1/venvs/untagged/ubuntu/watcher.tgz
 
