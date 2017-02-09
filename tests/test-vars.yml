@@ -24,7 +24,7 @@ watcher_rabbitmq_use_ssl: "{{ rabbitmq_use_ssl }}"
 watcher_rabbitmq_password: "{{ rabbitmq_password }}"
 watcher_rabbitmq_userid: watcher
 watcher_rabbitmq_vhost: /watcher
-watcher_requirements_git_install_branch: master
+watcher_requirements_git_install_branch: stable/ocata
 watcher_service_adminurl: "http://{{ hostvars[groups['watcher_api'][0]]['ansible_host'] }}:9322"
 watcher_service_password: "secrete"
 watcher_service_project_domain_id: default
