@@ -35,7 +35,7 @@ project_domain_id = {{ watcher_service_project_domain_id }}
 user_domain_id = {{ watcher_service_user_domain_id }}
 project_name = {{ watcher_service_project_name }}
 memcached_servers = {{ memcached_servers }}
-auth_type = password
+auth_type = {{ watcher_keystone_auth_plugin }}
 
 [watcher_clients_auth]
 auth_url = {{ keystone_service_adminuri }}
