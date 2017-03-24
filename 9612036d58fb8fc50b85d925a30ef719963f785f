@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Workflow+1: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 24 Mar 2017 19:48:24 +0000
+Reviewed-on: https://review.openstack.org/448374
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
