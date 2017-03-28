@@ -20,6 +20,7 @@
     system_user: "{{ watcher_system_user_name }}"
     system_group: "{{ watcher_system_group_name }}"
     service_home: "{{ watcher_system_user_home }}"
+    init_config_overrides: "{{ watcher_api_init_config_overrides }}"
   when: inventory_hostname in groups['watcher_api']
 
 - include: watcher_init_common.yml
@@ -29,6 +30,7 @@
     system_user: "{{ watcher_system_user_name }}"
     system_group: "{{ watcher_system_group_name }}"
     service_home: "{{ watcher_system_user_home }}"
+    init_config_overrides: "{{ watcher_decision_init_config_overrides }}"
   when: inventory_hostname in groups['watcher_decision_engine']
 
 - include: watcher_init_common.yml
@@ -38,4 +40,5 @@
     system_user: "{{ watcher_system_user_name }}"
     system_group: "{{ watcher_system_group_name }}"
     service_home: "{{ watcher_system_user_home }}"
+    init_config_overrides: "{{ watcher_applier_init_config_overrides }}"
   when: inventory_hostname in groups['watcher_applier']
