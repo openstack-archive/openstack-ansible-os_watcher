@@ -128,3 +128,7 @@ watcher_role_project_group: watcher_all
 ## Tunable overrides
 watcher_policy_overrides: {}
 watcher_conf_overrides: {}
+
+watcher_api_init_config_overrides: {}
+watcher_decision_init_config_overrides: {}
+watcher_applier_init_config_overrides: {}
