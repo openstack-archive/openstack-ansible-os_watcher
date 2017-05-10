@@ -39,11 +39,18 @@
   retries: 5
   delay: 2
 
+- name: Retrieve checksum for venv download
+  uri:
+    url: "{{ watcher_venv_download_url | replace('tgz', 'checksum') }}"
+    return_content: yes
+  register: watcher_venv_checksum
+  when: watcher_venv_download | bool
+
 - name: Attempt venv download
   get_url:
     url: "{{ watcher_venv_download_url }}"
     dest: "/var/cache/{{ watcher_venv_download_url | basename }}"
-    checksum: "sha1:{{ lookup('url', watcher_venv_download_url | replace('tgz', 'checksum')) }}"
+    checksum: "sha1:{{ watcher_venv_checksum.content | trim }}"
   register: watcher_get_venv
   when: watcher_venv_download | bool
 
