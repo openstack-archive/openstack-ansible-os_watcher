@@ -14,7 +14,7 @@ rabbit_userid = {{ watcher_rabbitmq_userid }}
 rabbit_password = {{ watcher_rabbitmq_password }}
 rabbit_virtual_host = {{ watcher_rabbitmq_vhost }}
 rabbit_hosts = {{ watcher_rabbitmq_servers }}
-rabbit_use_ssl = {{ watcher_rabbitmq_use_ssl }}
+ssl = {{ watcher_rabbitmq_use_ssl }}
 
 [database]
 connection = mysql+pymysql://{{ watcher_galera_user }}:{{ watcher_galera_password }}@{{ watcher_galera_address }}/{{ watcher_galera_database }}?charset=utf8
