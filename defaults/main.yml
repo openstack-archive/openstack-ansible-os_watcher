@@ -103,7 +103,7 @@ watcher_pip_packages:
   - python-watcherclient
   - PyMySQL
   - python-memcached
-  - pycrypto
+  - cryptography
 
 # watcher services info
 watcher_role_name: admin
