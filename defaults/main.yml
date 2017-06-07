@@ -99,11 +99,11 @@ watcher_requires_pip_packages:
 
 # Common pip packages
 watcher_pip_packages:
-  - watcher
+  - cryptography
   - python-watcherclient
   - PyMySQL
   - python-memcached
-  - pycrypto
+  - watcher
 
 # watcher services info
 watcher_role_name: admin
