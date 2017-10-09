@@ -37,3 +37,6 @@ dependencies:
       - ansible_pkg_mgr == 'apt'
   - galera_client
   - openstack_openrc
+openstack_ansible_info:
+  maturity: incubated
+  created_during: queens
