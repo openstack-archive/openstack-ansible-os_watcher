@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Marc Gariépy (mgariepy) <gariepy.marc@gmail.com>
+Workflow+1: Marc Gariépy (mgariepy) <gariepy.marc@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 23 Oct 2017 20:27:36 +0000
+Reviewed-on: https://review.openstack.org/514298
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/ocata
