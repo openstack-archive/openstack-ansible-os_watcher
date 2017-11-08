@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 08 Nov 2017 12:37:08 +0000
+Reviewed-on: https://review.openstack.org/518083
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/ocata
