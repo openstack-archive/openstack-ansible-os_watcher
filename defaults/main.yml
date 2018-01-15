@@ -93,7 +93,6 @@ watcher_keystone_auth_plugin: password
 # watcher packages that must be installed before anything else
 watcher_requires_pip_packages:
   - virtualenv
-  - virtualenv-tools
   - python-keystoneclient # Keystoneclient needed to OSA keystone lib
   - httplib2
 
