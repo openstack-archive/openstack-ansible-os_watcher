@@ -1,0 +1,9 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 15 Jan 2018 16:56:59 +0000
+Reviewed-on: https://review.openstack.org/533705
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
