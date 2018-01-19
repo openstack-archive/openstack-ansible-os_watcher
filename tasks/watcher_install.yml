@@ -97,6 +97,7 @@
   shell: |
     find {{ watcher_bin }} -name \*.pyc -delete
     sed -si '1s/^.*python.*$/#!{{ watcher_bin | replace ('/','\/') }}\/python/' {{ watcher_bin }}/*
+    virtualenv {{ watcher_bin | dirname }}
   when: watcher_get_venv | changed
   tags:
     - skip_ansible_lint
