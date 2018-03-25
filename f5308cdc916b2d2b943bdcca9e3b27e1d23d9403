@@ -1,0 +1,9 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Code-Review+2: Logan V <logan2211@gmail.com>
+Workflow+1: Logan V <logan2211@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Sun, 25 Mar 2018 15:23:24 +0000
+Reviewed-on: https://review.openstack.org/556117
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
