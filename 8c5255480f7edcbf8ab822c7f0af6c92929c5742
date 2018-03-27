@@ -1,0 +1,9 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Code-Review+2: Logan V <logan2211@gmail.com>
+Workflow+1: Logan V <logan2211@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 27 Mar 2018 17:18:32 +0000
+Reviewed-on: https://review.openstack.org/556941
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
