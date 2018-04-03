@@ -28,7 +28,7 @@ policy_file = /etc/watcher/policy.json
 
 [keystone_authtoken]
 auth_url = {{ keystone_service_adminuri }}
-auth_uri = {{ keystone_service_internaluri }}
+www_authenticate_uri = {{ keystone_service_internaluri }}
 username = {{ watcher_service_user_name }}
 password = {{ watcher_service_password }}
 project_domain_id = {{ watcher_service_project_domain_id }}
