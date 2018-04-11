@@ -47,6 +47,7 @@
         state: "present"
       delegate_to: "{{ hostvars[groups['rabbitmq_all'][0]]['ansible_host'] }}"
       when: inventory_hostname == groups['watcher_all'][0]
+      no_log: true
     - name: Create DB for service
       mysql_db:
         login_user: "{{ galera_root_user }}"
@@ -56,6 +57,7 @@
         state: "present"
       delegate_to: "{{ hostvars[groups['galera_all'][0]]['ansible_host'] }}"
       when: inventory_hostname == groups['watcher_all'][0]
+      no_log: true
     - name: Grant access to the DB for the service
       mysql_user:
         login_user: "{{ galera_root_user }}"
@@ -71,6 +73,7 @@
         - "%"
       delegate_to: "{{ hostvars[groups['rabbitmq_all'][0]]['ansible_host'] }}"
       when: inventory_hostname == groups['watcher_all'][0]
+      no_log: true
 
   roles:
     - role: "os_watcher"
