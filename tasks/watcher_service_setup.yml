@@ -28,6 +28,7 @@
   until: add_service|success
   retries: 5
   delay: 2
+  no_log: true
 
 - name: Ensure watcher user
   keystone:
@@ -46,6 +47,7 @@
   until: add_service|success
   retries: 5
   delay: 10
+  no_log: true
 
 - name: Ensure watcher user to admin role
   keystone:
@@ -63,6 +65,7 @@
   until: add_admin_role|success
   retries: 5
   delay: 10
+  no_log: true
 
 # Create an endpoint
 - name: Ensure watcher endpoint
@@ -87,3 +90,4 @@
   until: add_service|success
   retries: 5
   delay: 10
+  no_log: true
