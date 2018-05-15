@@ -39,7 +39,7 @@ auth_type = {{ watcher_keystone_auth_plugin }}
 
 [watcher_clients_auth]
 auth_url = {{ keystone_service_adminuri }}
-auth_uri = {{ keystone_service_internaluri }}
+www_authenticate_uri = {{ keystone_service_internaluri }}
 username = {{ watcher_service_user_name }}
 password = {{ watcher_service_password }}
 project_domain_id = {{ watcher_service_project_domain_id }}
