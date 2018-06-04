@@ -1,0 +1,9 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 04 Jun 2018 13:27:45 +0000
+Reviewed-on: https://review.openstack.org/563515
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/queens
