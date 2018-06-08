@@ -99,6 +99,7 @@ watcher_requires_pip_packages:
 # Common pip packages
 watcher_pip_packages:
   - cryptography
+  - osprofiler
   - python-watcherclient
   - PyMySQL
   - python-memcached
