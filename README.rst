@@ -73,3 +73,18 @@ This role supports two tags: ``watcher-install`` and ``watcher-config``.
 The ``watcher-install`` tag can be used to install and upgrade.
 
 The ``watcher-config`` tag can be used to maintain configuration of the service.
+
+.. Change things from this point on
+
+======================================
+OpenStack-Ansible Watcher
+======================================
+
+Documentation for the project can be found at:
+  https://docs.openstack.org/openstack-ansible-os_watcher/latest/
+
+Release notes for the project can be found at:
+  https://docs.openstack.org/releasenotes/openstack-ansible-os_watcher/
+
+The project home is at:
+  https://launchpad.net/openstack-ansible
