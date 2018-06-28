@@ -30,12 +30,14 @@
         - pkg-config
         - libvirt-dev
       when: inventory_hostname in groups['watcher_all']
+
     - name: Ensure rabbitmq vhost
       rabbitmq_vhost:
         name: "{{ watcher_rabbitmq_vhost }}"
         state: "present"
       delegate_to: "{{ hostvars[groups['rabbitmq_all'][0]]['ansible_host'] }}"
       when: inventory_hostname == groups['watcher_all'][0]
+
     - name: Ensure rabbitmq user
       rabbitmq_user:
         user: "{{ watcher_rabbitmq_userid }}"
@@ -48,35 +50,8 @@
       delegate_to: "{{ hostvars[groups['rabbitmq_all'][0]]['ansible_host'] }}"
       when: inventory_hostname == groups['watcher_all'][0]
       no_log: true
-    - name: Create DB for service
-      mysql_db:
-        login_user: "{{ galera_root_user }}"
-        login_password: "{{ galera_root_password }}"
-        login_host: "{{ watcher_galera_address }}"
-        name: "{{ watcher_galera_database }}"
-        state: "present"
-      delegate_to: "{{ hostvars[groups['galera_all'][0]]['ansible_host'] }}"
-      when: inventory_hostname == groups['watcher_all'][0]
-      no_log: true
-    - name: Grant access to the DB for the service
-      mysql_user:
-        login_user: "{{ galera_root_user }}"
-        login_password: "{{ galera_root_password }}"
-        login_host: "{{ watcher_galera_address }}"
-        name: "{{ watcher_galera_database }}"
-        password: "{{ watcher_galera_password }}"
-        host: "{{ item }}"
-        state: "present"
-        priv: "{{ watcher_galera_database }}.*:ALL"
-      with_items:
-        - "localhost"
-        - "%"
-      delegate_to: "{{ hostvars[groups['rabbitmq_all'][0]]['ansible_host'] }}"
-      when: inventory_hostname == groups['watcher_all'][0]
-      no_log: true
 
   roles:
     - role: "os_watcher"
   vars_files:
     - common/test-vars.yml
-    - test-vars.yml
