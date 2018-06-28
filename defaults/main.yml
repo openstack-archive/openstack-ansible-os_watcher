@@ -50,6 +50,8 @@ watcher_system_comment: watcher system user
 watcher_system_user_home: "/var/lib/{{ watcher_system_user_name }}"
 
 ## DB
+watcher_db_setup_host: "{{ ('galera_all' in groups) | ternary(groups['galera_all'][0], 'localhost') }}"
+watcher_galera_address: "{{ galera_address | default('127.0.0.1') }}"
 watcher_galera_user: watcher
 watcher_galera_database: watcher
 
