@@ -14,9 +14,6 @@
 # limitations under the License.
 
 watcher_developer_mode: True
-watcher_galera_address: "{{ hostvars[groups['galera_all'][0]]['ansible_host'] }}"
-watcher_galera_database: watcher
-watcher_galera_user: watcher
 watcher_galera_password: "secrete"
 watcher_rabbitmq_port: "{{ rabbitmq_port }}"
 watcher_rabbitmq_servers: "{{ rabbitmq_servers }}"
