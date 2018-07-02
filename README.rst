@@ -37,7 +37,7 @@ Example Playbook
 
 .. code-block:: yaml
 
-    - name: Install watcher server
+    - name: Install watcher service
       hosts: watcher_all
       user: root
       roles:
