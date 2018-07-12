@@ -16,6 +16,11 @@
 ## Verbosity Options
 debug: False
 
+# Set the host which will execute the shade modules
+# for the service setup. The host must already have
+# clouds.yaml properly configured.
+watcher_service_setup_host: "{{ openstack_service_setup_host | default('localhost') }}"
+
 # Set the package install state for distribution and pip packages
 # Options are 'present' and 'latest'
 watcher_package_state: "latest"
@@ -91,12 +96,6 @@ watcher_service_in_ldap: false
 
 ## Keystone authentication middleware
 watcher_keystone_auth_plugin: password
-
-# watcher packages that must be installed before anything else
-watcher_requires_pip_packages:
-  - virtualenv
-  - python-keystoneclient # Keystoneclient needed to OSA keystone lib
-  - httplib2
 
 # Common pip packages
 watcher_pip_packages:
