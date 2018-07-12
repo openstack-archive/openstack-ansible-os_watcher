@@ -20,7 +20,7 @@
     update_cache: yes
     cache_valid_time: "{{ cache_timeout }}"
   register: install_packages
-  until: install_packages|success
+  until: install_packages is success
   retries: 5
   delay: 2
   with_items: "{{ watcher_distro_packages }}"
@@ -30,7 +30,7 @@
     pkg: "{{ item }}"
     state: "{{ watcher_package_state }}"
   register: install_packages
-  until: install_packages|success
+  until: install_packages is success
   retries: 5
   delay: 2
   with_items: "{{ watcher_developer_mode_distro_packages }}"

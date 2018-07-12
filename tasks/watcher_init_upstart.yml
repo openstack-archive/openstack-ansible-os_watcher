@@ -26,7 +26,7 @@
 
 - name: Reload init scripts
   command: initctl reload-configuration
-  when: upstart_init | changed
+  when: upstart_init  is changed
   notify:
     - Restart watcher services
 

@@ -51,6 +51,6 @@
 - name: Reload the systemd daemon
   systemd:
     daemon_reload: "yes"
-  when: systemd_init | changed
+  when: systemd_init  is changed
   notify:
     - Restart watcher services

@@ -36,7 +36,7 @@
       {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       {{ pip_install_options | default('') }}
   register: install_packages
-  until: install_packages|success
+  until: install_packages is success
   retries: 5
   delay: 2
 
@@ -59,21 +59,21 @@
   file:
     path: "{{ watcher_bin | dirname }}"
     state: absent
-  when: watcher_get_venv | changed
+  when: watcher_get_venv  is changed
 
 - name: Create watcher venv dir
   file:
     path: "{{ watcher_bin | dirname }}"
     state: directory
   register: watcher_venv_dir
-  when: watcher_get_venv | changed
+  when: watcher_get_venv  is changed
 
 - name: Unarchive pre-built venv
   unarchive:
     src: "/var/cache/{{ watcher_venv_download_url | basename }}"
     dest: "{{ watcher_bin | dirname }}"
     copy: "no"
-  when: watcher_get_venv | changed
+  when: watcher_get_venv  is changed
   notify: Restart watcher services
 
 - name: Install pip packages
@@ -87,7 +87,7 @@
       {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       {{ pip_install_options | default('') }}
   register: install_packages
-  until: install_packages|success
+  until: install_packages is success
   retries: 5
   delay: 2
   when: watcher_get_venv | failed or watcher_get_venv | skipped
@@ -109,6 +109,6 @@
         --no-pip \
         --no-setuptools \
         --no-wheel
-  when: watcher_get_venv | changed
+  when: watcher_get_venv  is changed
   tags:
     - skip_ansible_lint
