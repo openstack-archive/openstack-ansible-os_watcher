@@ -134,3 +134,7 @@ watcher_conf_overrides: {}
 watcher_api_init_config_overrides: {}
 watcher_decision_init_config_overrides: {}
 watcher_applier_init_config_overrides: {}
+watcher_oslomsg_rpc_host_group: "{{ oslomsg_rpc_host_group | default('rabbitmq_all') }}"
+watcher_oslomsg_notify_host_group: "{{ oslomsg_notify_host_group | default('rabbitmq_all') }}"
+watcher_oslomsg_rpc_setup_host: "{{ (watcher_oslomsg_rpc_host_group in groups) | ternary(groups[watcher_oslomsg_rpc_host_group][0], 'localhost') }}"
+watcher_oslomsg_notify_setup_host: "{{ (watcher_oslomsg_notify_host_group in groups) | ternary(groups[watcher_oslomsg_notify_host_group][0], 'localhost') }}"
