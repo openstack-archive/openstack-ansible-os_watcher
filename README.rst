@@ -76,9 +76,9 @@ The ``watcher-config`` tag can be used to maintain configuration of the service.
 
 .. Change things from this point on
 
-======================================
+=========================
 OpenStack-Ansible Watcher
-======================================
+=========================
 
 Documentation for the project can be found at:
   https://docs.openstack.org/openstack-ansible-os_watcher/latest/
