@@ -45,20 +45,20 @@
   tags:
     - always
 
-- include: watcher_pre_install.yml
+- include_tasks: watcher_pre_install.yml
   tags:
     - watcher-install
 
-- include: watcher_install.yml
+- include_tasks: watcher_install.yml
   tags:
     - watcher-install
 
-- include: watcher_post_install.yml
+- include_tasks: watcher_post_install.yml
   tags:
     - watcher-install
     - watcher-config
 
-- include: watcher_init.yml
+- include_tasks: watcher_init.yml
   tags:
     - watcher-install
 
@@ -67,7 +67,7 @@
   tags:
     - watcher-install
 
-- include: watcher_service_setup.yml
+- include_tasks: watcher_service_setup.yml
   when: inventory_hostname == groups['watcher_api'][0]
   tags:
     - watcher-install
