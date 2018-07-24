@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- include_tasks_tasks_tasks: watcher_init_common.yml
+- include_tasks_tasks: watcher_init_common.yml
   vars:
     program_name: "{{ watcher_api_program_name }}"
     service_name: "{{ watcher_service_name }}"
@@ -23,7 +23,7 @@
     init_config_overrides: "{{ watcher_api_init_config_overrides }}"
   when: inventory_hostname in groups['watcher_api']
 
-- include_tasks_tasks_tasks: watcher_init_common.yml
+- include_tasks_tasks: watcher_init_common.yml
   vars:
     program_name: "{{ watcher_decision_engine_program_name }}"
     service_name: "{{ watcher_service_name }}"
@@ -33,7 +33,7 @@
     init_config_overrides: "{{ watcher_decision_init_config_overrides }}"
   when: inventory_hostname in groups['watcher_decision_engine']
 
-- include_tasks_tasks_tasks: watcher_init_common.yml
+- include_tasks_tasks: watcher_init_common.yml
   vars:
     program_name: "{{ watcher_applier_program_name }}"
     service_name: "{{ watcher_service_name }}"
