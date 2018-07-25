@@ -80,6 +80,21 @@
   when: watcher_get_venv | failed or watcher_get_venv | skipped
   notify: Restart watcher services
 
+- name: Install optional pip packages
+  pip:
+    name: "{{ watcher_optional_oslomsg_amqp1_pip_packages }}"
+    state: "{{ watcher_pip_package_state }}"
+    virtualenv: "{{ watcher_bin | dirname }}"
+    virtualenv_site_packages: "no"
+  when: watcher_oslomsg_amqp1_enabled
+  register: install_optional_packages
+  until: install_optional_packages is success
+  retries: 5
+  delay: 2
+  notify:
+    - Manage LB
+    - Restart watcher services
+
 # NOTE(odyssey4me):
 # We reinitialize the venv to ensure that the right
 # version of python is in the venv, but we do not

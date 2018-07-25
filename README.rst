@@ -17,8 +17,8 @@ This role will install the following:
     * watcher-decision-engine
     * watcher-applier
 
-The role will configure Watcher, but does not provision RabbitMQ or
-MariaDB.
+The role will configure Watcher, but does not provision messaging
+backend or MariaDB.
 
 This role is intended to work primarily with OpenStack-Ansible, but
 consuming this role by setting the appropriate variables should be
@@ -43,27 +43,9 @@ Example Playbook
       roles:
         - { role: "os_watcher", tags: [ "os-watcher" ] }
       vars:
-        watcher_developer_mode: True
-        watcher_galera_address: 10.100.102.101
-        watcher_galera_database: watcher
-        watcher_galera_user: watcher
         watcher_galera_password: "secrete"
-        watcher_rabbitmq_port: "{{ rabbitmq_port }}"
-        watcher_rabbitmq_servers: "{{ rabbitmq_servers }}"
-        watcher_rabbitmq_use_ssl: "{{ rabbitmq_use_ssl }}"
-        watcher_rabbitmq_password: "secrete"
-        watcher_rabbitmq_userid: watcher
-        watcher_rabbitmq_vhost: /watcher
-        watcher_requirements_git_install_branch: master
-        watcher_service_adminurl: "http://{{ internal_lb_vip_address }}:9322"
+        watcher_oslomsg_rpc_password: "secrete"
         watcher_service_password: "secrete"
-        watcher_service_project_domain_id: default
-        watcher_service_project_name: service
-        watcher_service_region: RegionOne
-        watcher_service_user_domain_id: default
-        watcher_service_user_name: watcher
-        watcher_bin: "/openstack/venvs/watcher-{{ watcher_venv_tag }}/bin"
-        watcher_venv_tag: "testing"
 
 Tags
 ====

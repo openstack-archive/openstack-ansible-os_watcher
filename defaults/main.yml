@@ -60,15 +60,28 @@ watcher_galera_address: "{{ galera_address | default('127.0.0.1') }}"
 watcher_galera_user: watcher
 watcher_galera_database: watcher
 
-## RabbitMQ info
-watcher_rabbitmq_userid: watcher
-watcher_rabbitmq_vhost: /watcher
-watcher_rabbitmq_port: 5672
-watcher_rabbitmq_use_ssl: False
-# Comma separated list of hosts
-watcher_rabbitmq_servers: 127.0.0.1
-# Inventory group containing the hosts for the cluster
-watcher_rabbitmq_host_group: "rabbitmq_all"
+## Oslo Messaging info
+
+# RPC
+watcher_oslomsg_rpc_transport: rabbit
+watcher_oslomsg_rpc_servers: 127.0.0.1
+watcher_oslomsg_rpc_port: 5672
+watcher_oslomsg_rpc_use_ssl: False
+watcher_oslomsg_rpc_userid: watcher
+watcher_oslomsg_rpc_vhost: /watcher
+
+# Notify
+watcher_oslomsg_notify_transport: rabbit
+watcher_oslomsg_notify_servers: 127.0.0.1
+watcher_oslomsg_notify_port: 5672
+watcher_oslomsg_notify_use_ssl: False
+watcher_oslomsg_notify_userid: "{{ watcher_oslomsg_rpc_userid }}"
+watcher_oslomsg_notify_password: "{{ watcher_oslomsg_rpc_password }}"
+watcher_oslomsg_notify_vhost: "{{ watcher_oslomsg_rpc_vhost }}"
+
+# Inventory group containing the hosts for the messaging backend
+watcher_oslomsg_rpc_host_group: "oslomsg_rpc_all"
+watcher_oslomsg_notify_host_group: "oslomsg_notify_all"
 
 watcher_api_program_name: watcher-api
 watcher_decision_engine_program_name: watcher-decision-engine
@@ -106,6 +119,13 @@ watcher_pip_packages:
   - python-memcached
   - watcher
 
+## (Qdrouterd) integration
+# TODO(ansmith): Change structure when more backends will be supported
+watcher_oslomsg_amqp1_enabled: "{{ watcher_oslomsg_rpc_transport == 'amqp' }}"
+
+watcher_optional_oslomsg_amqp1_pip_packages:
+  - oslo.messaging[amqp1]
+
 # watcher services info
 watcher_role_name: admin
 
@@ -117,7 +137,8 @@ watcher_service_names:
 
 watcher_required_secrets:
   - watcher_galera_password
-  - watcher_rabbitmq_password
+  - watcher_oslomsg_rpc_password
+  - watcher_oslomsg_notify_password
   - watcher_service_password
 
 # This variable is used by the repo_build process to determine
