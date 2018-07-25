@@ -8,13 +8,13 @@ logging_context_format_string = %(asctime)s.%(msecs)03d %(color)s%(levelname)s %
 control_exchange = watcher
 debug = True
 
+transport_url = {{ watcher_oslomsg_rpc_transport }}://{% for host in watcher_oslomsg_rpc_servers.split(',') %}{{ watcher_oslomsg_rpc_userid }}:{{ watcher_oslomsg_rpc_password }}@{{ host }}:{{ watcher_oslomsg_rpc_port }}{% if not loop.last %},{% else %}/{{ watcher_oslomsg_rpc_vhost }}{% if (watcher_oslomsg_rpc_use_ssl | lower) | bool %}?ssl=1{% else %}?ssl=0{% endif %}{% endif %}{% endfor %}
+
 [oslo_messaging_rabbit]
-rabbit_port = {{ watcher_rabbitmq_port }}
-rabbit_userid = {{ watcher_rabbitmq_userid }}
-rabbit_password = {{ watcher_rabbitmq_password }}
-rabbit_virtual_host = {{ watcher_rabbitmq_vhost }}
-rabbit_hosts = {{ watcher_rabbitmq_servers }}
-ssl = {{ watcher_rabbitmq_use_ssl }}
+ssl = {{ watcher_oslomsg_notify_use_ssl | bool }}
+
+[oslo_messaging_notifications]
+transport_url = {{ watcher_oslomsg_notify_transport }}://{% for host in watcher_oslomsg_notify_servers.split(',') %}{{ watcher_oslomsg_notify_userid }}:{{ watcher_oslomsg_notify_password }}@{{ host }}:{{ watcher_oslomsg_notify_port }}{% if not loop.last %},{% else %}/{{ watcher_oslomsg_notify_vhost }}{% if (watcher_oslomsg_notify_use_ssl | lower) | bool %}?ssl=1{% else %}?ssl=0{% endif %}{% endif %}{% endfor %}
 
 [database]
 connection = mysql+pymysql://{{ watcher_galera_user }}:{{ watcher_galera_password }}@{{ watcher_galera_address }}/{{ watcher_galera_database }}?charset=utf8

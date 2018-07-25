@@ -17,8 +17,8 @@ This role will install the following:
     * watcher-decision-engine
     * watcher-applier
 
-The role will configure Watcher, but does not provision RabbitMQ or
-MariaDB.
+The role will configure Watcher, but does not provision messaging
+backend or MariaDB.
 
 This role is intended to work primarily with OpenStack-Ansible, but
 consuming this role by setting the appropriate variables should be
@@ -48,12 +48,18 @@ Example Playbook
         watcher_galera_database: watcher
         watcher_galera_user: watcher
         watcher_galera_password: "secrete"
-        watcher_rabbitmq_port: "{{ rabbitmq_port }}"
-        watcher_rabbitmq_servers: "{{ rabbitmq_servers }}"
-        watcher_rabbitmq_use_ssl: "{{ rabbitmq_use_ssl }}"
-        watcher_rabbitmq_password: "secrete"
-        watcher_rabbitmq_userid: watcher
-        watcher_rabbitmq_vhost: /watcher
+        watcher_oslomsg_rpc_port: "{{ oslomsg_rpc_port }}"
+        watcher_oslomsg_rpc_servers: "{{ oslomsg_rpc_servers }}"
+        watcher_oslomsg_rpc_use_ssl: "{{ oslomsg_rpc_use_ssl }}"
+        watcher_oslomsg_rpc_password: "secrete"
+        watcher_oslomsg_rpc_userid: watcher
+        watcher_oslomsg_rpc_vhost: /watcher
+        watcher_oslomsg_notify_port: "{{ oslomsg_notify_port }}"
+        watcher_oslomsg_notify_servers: "{{ oslomsg_notify_servers }}"
+        watcher_oslomsg_notify_use_ssl: "{{ oslomsg_notify_use_ssl }}"
+        watcher_oslomsg_notify_password: "secrete"
+        watcher_oslomsg_notify_userid: watcher
+        watcher_oslomsg_notify_vhost: /watcher
         watcher_requirements_git_install_branch: master
         watcher_service_adminurl: "http://{{ internal_lb_vip_address }}:9322"
         watcher_service_password: "secrete"

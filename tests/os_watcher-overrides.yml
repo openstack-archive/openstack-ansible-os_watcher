@@ -15,12 +15,20 @@
 
 watcher_developer_mode: True
 watcher_galera_password: "secrete"
-watcher_rabbitmq_port: "{{ rabbitmq_port }}"
-watcher_rabbitmq_servers: "{{ rabbitmq_servers }}"
-watcher_rabbitmq_use_ssl: "{{ rabbitmq_use_ssl }}"
-watcher_rabbitmq_password: "{{ rabbitmq_password }}"
-watcher_rabbitmq_userid: watcher
-watcher_rabbitmq_vhost: /watcher
+watcher_oslomsg_rpc_port: "{{ oslomsg_rpc_port }}"
+watcher_oslomsg_rpc_use_ssl: "{{ oslomsg_rpc_use_ssl }}"
+watcher_oslomsg_rpc_servers: "{{ oslomsg_rpc_servers }}"
+watcher_oslomsg_rpc_host_group: "{{ oslomsg_rpc_host_group }}"
+watcher_oslomsg_rpc_password: "{{ oslomsg_rpc_password }}"
+watcher_oslomsg_rpc_userid: watcher
+watcher_oslomsg_rpc_vhost: /watcher
+watcher_oslomsg_notify_port: "{{ oslomsg_notify_port }}"
+watcher_oslomsg_notify_use_ssl: "{{ oslomsg_notify_use_ssl }}"
+watcher_oslomsg_notify_servers: "{{ oslomsg_notify_servers }}"
+watcher_oslomsg_notify_host_group: "{{ oslomsg_notify_host_group }}"
+watcher_oslomsg_notify_password: "{{ oslomsg_notify_password }}"
+watcher_oslomsg_notify_userid: watcher
+watcher_oslomsg_notify_vhost: /watcher
 watcher_requirements_git_install_branch: master
 watcher_service_adminurl: "http://{{ hostvars[groups['watcher_api'][0]]['ansible_host'] }}:9322"
 watcher_service_password: "secrete"
