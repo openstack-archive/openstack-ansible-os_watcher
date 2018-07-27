@@ -63,25 +63,27 @@ watcher_galera_database: watcher
 ## Oslo Messaging info
 
 # RPC
-watcher_oslomsg_rpc_transport: rabbit
-watcher_oslomsg_rpc_servers: 127.0.0.1
-watcher_oslomsg_rpc_port: 5672
-watcher_oslomsg_rpc_use_ssl: False
+watcher_oslomsg_rpc_setup_host: "{{ (watcher_oslomsg_rpc_host_group in groups) | ternary(groups[watcher_oslomsg_rpc_host_group][0], 'localhost') }}"
+watcher_oslomsg_rpc_transport: "{{ oslomsg_rpc_transport | default('rabbit') }}"
+watcher_oslomsg_rpc_servers: "{{ oslomsg_rpc_servers | default('127.0.0.1') }}"
+watcher_oslomsg_rpc_port: "{{ oslomsg_rpc_port | default('5672') }}"
+watcher_oslomsg_rpc_use_ssl: "{{ oslomsg_rpc_use_ssl | default(False) }}"
 watcher_oslomsg_rpc_userid: watcher
 watcher_oslomsg_rpc_vhost: /watcher
 
 # Notify
-watcher_oslomsg_notify_transport: rabbit
-watcher_oslomsg_notify_servers: 127.0.0.1
-watcher_oslomsg_notify_port: 5672
-watcher_oslomsg_notify_use_ssl: False
+watcher_oslomsg_notify_setup_host: "{{ (watcher_oslomsg_notify_host_group in groups) | ternary(groups[watcher_oslomsg_notify_host_group][0], 'localhost') }}"
+watcher_oslomsg_notify_transport: "{{ oslomsg_notify_transport | default('rabbit') }}"
+watcher_oslomsg_notify_servers: "{{ oslomsg_notify_servers | default('127.0.0.1') }}"
+watcher_oslomsg_notify_port: "{{ oslomsg_notify_port | default('5672') }}"
+watcher_oslomsg_notify_use_ssl: "{{ oslomsg_notify_use_ssl | default(False) }}"
 watcher_oslomsg_notify_userid: "{{ watcher_oslomsg_rpc_userid }}"
 watcher_oslomsg_notify_password: "{{ watcher_oslomsg_rpc_password }}"
 watcher_oslomsg_notify_vhost: "{{ watcher_oslomsg_rpc_vhost }}"
 
 # Inventory group containing the hosts for the messaging backend
-watcher_oslomsg_rpc_host_group: "oslomsg_rpc_all"
-watcher_oslomsg_notify_host_group: "oslomsg_notify_all"
+watcher_oslomsg_rpc_host_group: "{{ oslomsg_rpc_host_group | default('rabbitmq_all') }}"
+watcher_oslomsg_notify_host_group: "{{ oslomsg_notify_host_group | default('rabbitmq_all') }}"
 
 watcher_api_program_name: watcher-api
 watcher_decision_engine_program_name: watcher-decision-engine
