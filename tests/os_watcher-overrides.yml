@@ -15,27 +15,6 @@
 
 watcher_developer_mode: True
 watcher_galera_password: "secrete"
-watcher_oslomsg_rpc_port: "{{ oslomsg_rpc_port }}"
-watcher_oslomsg_rpc_use_ssl: "{{ oslomsg_rpc_use_ssl }}"
-watcher_oslomsg_rpc_servers: "{{ oslomsg_rpc_servers }}"
-watcher_oslomsg_rpc_host_group: "{{ oslomsg_rpc_host_group }}"
 watcher_oslomsg_rpc_password: "{{ oslomsg_rpc_password }}"
-watcher_oslomsg_rpc_userid: watcher
-watcher_oslomsg_rpc_vhost: /watcher
-watcher_oslomsg_notify_port: "{{ oslomsg_notify_port }}"
-watcher_oslomsg_notify_use_ssl: "{{ oslomsg_notify_use_ssl }}"
-watcher_oslomsg_notify_servers: "{{ oslomsg_notify_servers }}"
-watcher_oslomsg_notify_host_group: "{{ oslomsg_notify_host_group }}"
-watcher_oslomsg_notify_password: "{{ oslomsg_notify_password }}"
-watcher_oslomsg_notify_userid: watcher
-watcher_oslomsg_notify_vhost: /watcher
-watcher_requirements_git_install_branch: master
 watcher_service_adminurl: "http://{{ hostvars[groups['watcher_api'][0]]['ansible_host'] }}:9322"
 watcher_service_password: "secrete"
-watcher_service_project_domain_id: default
-watcher_service_project_name: service
-watcher_service_region: RegionOne
-watcher_service_user_domain_id: default
-watcher_service_user_name: watcher
-watcher_bin: "/openstack/venvs/watcher-{{ watcher_venv_tag }}/bin"
-watcher_venv_tag: "testing"

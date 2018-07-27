@@ -17,6 +17,8 @@
   hosts: watcher_all
   user: root
   gather_facts: True
+  vars_files:
+    - common/test-vars.yml
   pre_tasks:
     # NOTE: These are typically installed in the repo server where we build the
     #       watcher wheel
@@ -31,15 +33,5 @@
         - libvirt-dev
       when: inventory_hostname in groups['watcher_all']
 
-    - include: common/ensure-oslomsg.yml
-      rpc_vhost: "{{ watcher_oslomsg_rpc_vhost }}"
-      rpc_user: "{{ watcher_oslomsg_rpc_userid }}"
-      rpc_password: "{{ watcher_oslomsg_rpc_password }}"
-      notify_vhost: "{{ watcher_oslomsg_notify_vhost }}"
-      notify_user: "{{ watcher_oslomsg_notify_userid }}"
-      notify_password: "{{ watcher_oslomsg_notify_password }}"
-
   roles:
     - role: "os_watcher"
-  vars_files:
-    - common/test-vars.yml
