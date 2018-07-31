@@ -1,0 +1,9 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 31 Jul 2018 14:40:06 +0000
+Reviewed-on: https://review.openstack.org/583397
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
