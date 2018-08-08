@@ -1,0 +1,9 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Workflow+1: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 08 Aug 2018 13:39:32 +0000
+Reviewed-on: https://review.openstack.org/589492
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
