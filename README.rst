@@ -70,3 +70,6 @@ Release notes for the project can be found at:
 
 The project home is at:
   https://launchpad.net/openstack-ansible
+
+The project source code repository is at:
+  https://git.openstack.org/cgit/openstack/openstack-ansible-os_watcher/
