@@ -1,0 +1,8 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 17 Aug 2018 05:07:13 +0000
+Reviewed-on: https://review.openstack.org/590983
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/rocky
