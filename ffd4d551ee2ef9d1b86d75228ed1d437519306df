@@ -1,0 +1,11 @@
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Code-Review+1: caoyuan <cao.yuan@99cloud.net>
+Code-Review+1: jacky06 <zhang.min@99cloud.net>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 17 Aug 2018 04:06:41 +0000
+Reviewed-on: https://review.openstack.org/585210
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
