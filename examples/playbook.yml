@@ -1,3 +1,4 @@
+---
 - name: Install Watcher
    hosts: all
    user: root
