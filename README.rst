@@ -73,3 +73,6 @@ The project source code repository is located at:
 
 The project home is at:
   https://launchpad.net/openstack-ansible
+
+The bugs can be found at:
+ https://bugs.launchpad.net/openstack-ansible
