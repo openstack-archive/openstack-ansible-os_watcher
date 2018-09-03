@@ -13,10 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- include_tasks: install-apt.yml
-  static: no
-  when: ansible_pkg_mgr == 'apt'
-
+# TODO(odyssey4me):
+# This can be simplified once all the roles are using
+# python_venv_build. We can then switch to using a
+# set of constraints in pip.conf inside the venv,
+# perhaps prepared by giving a giving a list of
+# constraints to the role.
 - name: Create developer mode constraint file
   copy:
     dest: "/opt/developer-pip-constraints.txt"
@@ -27,90 +29,22 @@
   when:
     - watcher_developer_mode | bool
 
-- name: Retrieve checksum for venv download
-  uri:
-    url: "{{ watcher_venv_download_url | replace('tgz', 'checksum') }}"
-    return_content: yes
-  register: watcher_venv_checksum
-  when: watcher_venv_download | bool
+- name: Ensure remote wheel building is disabled in developer mode
+  set_fact:
+    venv_build_host: "{{ ansible_hostname }}"
+  when:
+    - watcher_developer_mode | bool
 
-- name: Attempt venv download
-  get_url:
-    url: "{{ watcher_venv_download_url }}"
-    dest: "/var/cache/{{ watcher_venv_download_url | basename }}"
-    checksum: "sha1:{{ watcher_venv_checksum.content | trim }}"
-  register: watcher_get_venv
-  when: watcher_venv_download | bool
-
-- name: Remove existing venv
-  file:
-    path: "{{ watcher_bin | dirname }}"
-    state: absent
-  when: watcher_get_venv  is changed
-
-- name: Create watcher venv dir
-  file:
-    path: "{{ watcher_bin | dirname }}"
-    state: directory
-  register: watcher_venv_dir
-  when: watcher_get_venv  is changed
-
-- name: Unarchive pre-built venv
-  unarchive:
-    src: "/var/cache/{{ watcher_venv_download_url | basename }}"
-    dest: "{{ watcher_bin | dirname }}"
-    copy: "no"
-  when: watcher_get_venv  is changed
-  notify: Restart watcher services
-
-- name: Install pip packages
-  pip:
-    name: "{{ watcher_pip_packages }}"
-    state: "{{ watcher_pip_package_state }}"
-    virtualenv: "{{ watcher_bin | dirname }}"
-    virtualenv_site_packages: "no"
-    extra_args: >-
-      {{ watcher_developer_mode | ternary(pip_install_developer_constraints | default('--constraint /opt/developer-pip-constraints.txt'), '') }}
-      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
-      {{ pip_install_options | default('') }}
-  register: install_packages
-  until: install_packages is success
-  retries: 5
-  delay: 2
-  when: watcher_get_venv | failed or watcher_get_venv | skipped
-  notify: Restart watcher services
-
-- name: Install optional pip packages
-  pip:
-    name: "{{ watcher_optional_oslomsg_amqp1_pip_packages }}"
-    state: "{{ watcher_pip_package_state }}"
-    virtualenv: "{{ watcher_bin | dirname }}"
-    virtualenv_site_packages: "no"
-  when: watcher_oslomsg_amqp1_enabled
-  register: install_optional_packages
-  until: install_optional_packages is success
-  retries: 5
-  delay: 2
-  notify:
-    - Manage LB
-    - Restart watcher services
-
-# NOTE(odyssey4me):
-# We reinitialize the venv to ensure that the right
-# version of python is in the venv, but we do not
-# want virtualenv to also replace pip, setuptools
-# and wheel so we tell it not to.
-# We do not use --always-copy for CentOS/SuSE due
-# to https://github.com/pypa/virtualenv/issues/565
-- name: Update virtualenv path
-  shell: |
-    find {{ watcher_bin }} -name \*.pyc -delete
-    sed -si '1s/^.*python.*$/#!{{ watcher_bin | replace ('/','\/') }}\/python/' {{ watcher_bin }}/*
-    virtualenv {{ watcher_bin | dirname }} \
-        {{ (ansible_pkg_mgr == 'apt') | ternary('--always-copy', '') }} \
-        --no-pip \
-        --no-setuptools \
-        --no-wheel
-  when: watcher_get_venv  is changed
-  tags:
-    - skip_ansible_lint
+- name: Install the python venv
+  include_role:
+    name: "python_venv_build"
+    private: yes
+  vars:
+    venv_install_destination_path: "{{ watcher_bin | dirname }}"
+    venv_install_distro_package_list: "{{ watcher_distro_packages }}"
+    venv_pip_install_args: "{{ watcher_pip_install_args }}"
+    venv_pip_packages: "{{ (watcher_oslomsg_amqp1_enabled | bool) | ternary(watcher_pip_packages + watcher_optional_oslomsg_amqp1_pip_packages, watcher_pip_packages) }}"
+    venv_facts_when_changed:
+      - section: "watcher"
+        option: "venv_tag"
+        value: "{{ watcher_venv_tag }}"

@@ -38,3 +38,5 @@
     pattern: "{{ item }}"
   with_items: "{{ watcher_service_names }}"
   failed_when: false
+  listen:
+    - "venv changed"
