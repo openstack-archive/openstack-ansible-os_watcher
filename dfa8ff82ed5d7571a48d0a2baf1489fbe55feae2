@@ -1,0 +1,9 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Workflow+1: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Sat, 08 Sep 2018 20:47:03 +0000
+Reviewed-on: https://review.openstack.org/600948
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
