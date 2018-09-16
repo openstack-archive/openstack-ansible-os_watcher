@@ -1,0 +1,9 @@
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Code-Review+2: Logan V <logan2211@gmail.com>
+Workflow+1: Logan V <logan2211@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Sun, 16 Sep 2018 04:01:26 +0000
+Reviewed-on: https://review.openstack.org/602915
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
