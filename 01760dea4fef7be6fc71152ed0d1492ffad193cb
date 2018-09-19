@@ -1,0 +1,9 @@
+Code-Review+2: Logan V <logan2211@gmail.com>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 19 Sep 2018 18:17:57 +0000
+Reviewed-on: https://review.openstack.org/603781
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/rocky
