@@ -80,7 +80,7 @@
     - common-mq
     - watcher-config
 
-- include: watcher_db_setup.yml
+- import_playbook: watcher_db_setup.yml
   when: inventory_hostname == groups['watcher_api'][0]
   tags:
     - watcher-install
