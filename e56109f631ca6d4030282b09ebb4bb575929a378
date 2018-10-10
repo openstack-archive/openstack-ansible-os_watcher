@@ -1,0 +1,9 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 10 Oct 2018 07:52:54 +0000
+Reviewed-on: https://review.openstack.org/608958
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/rocky
