@@ -1,0 +1,9 @@
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 18 Oct 2018 19:49:41 +0000
+Reviewed-on: https://review.openstack.org/609446
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/rocky
