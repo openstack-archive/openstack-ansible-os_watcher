@@ -24,4 +24,4 @@
    name: "{{ program_name }}"
    enabled: "yes"
   notify:
-    - Restart watcher services
+   - Restart watcher services
