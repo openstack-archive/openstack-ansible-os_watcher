@@ -1,0 +1,9 @@
+Code-Review+2: Dmitriy Rabotjagov (noonedeadpunk) <noonedeadpunk@ya.ru>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 01 Apr 2019 14:53:15 +0000
+Reviewed-on: https://review.openstack.org/649018
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
