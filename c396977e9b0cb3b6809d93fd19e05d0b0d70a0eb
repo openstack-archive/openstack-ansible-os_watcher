@@ -1,0 +1,8 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse@odyssey4.me>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse@odyssey4.me>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 17 Apr 2019 13:33:31 +0000
+Reviewed-on: https://review.openstack.org/653336
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
