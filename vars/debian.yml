@@ -1,7 +1,0 @@
----
-# vars file for os_watcher
-watcher_distro_packages:
-  - git
-
-watcher_developer_mode_distro_packages:
-  - git

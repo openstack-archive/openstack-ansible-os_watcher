@@ -1,6 +1,0 @@
----
-- name: Install Watcher
-   hosts: all
-   user: root
-   roles:
-     - role: "openstack-ansible-os_watcher"
