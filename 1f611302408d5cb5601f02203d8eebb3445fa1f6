@@ -1,0 +1,8 @@
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 24 Apr 2019 20:52:23 +0000
+Reviewed-on: https://review.opendev.org/653633
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/master
