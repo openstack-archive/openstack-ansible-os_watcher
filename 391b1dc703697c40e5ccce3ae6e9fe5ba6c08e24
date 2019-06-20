@@ -1,0 +1,9 @@
+Code-Review+2: Logan V <logan2211@gmail.com>
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Workflow+1: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 20 Jun 2019 21:30:40 +0000
+Reviewed-on: https://review.opendev.org/666698
+Project: openstack/openstack-ansible-os_watcher
+Branch: refs/heads/stable/rocky
